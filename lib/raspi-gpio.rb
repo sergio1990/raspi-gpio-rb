@@ -95,7 +95,7 @@ class GPIO
   #
   # @return [Integer] pin's value : 0 or 1
   def value
-    File.open("#{LIB_PATH}/gpio#{@pin}/value", 'r').read
+    File.open("#{LIB_PATH}/gpio#{@pin}/value", 'r').read.to_i
   end
 
   # Set a value to the pin
