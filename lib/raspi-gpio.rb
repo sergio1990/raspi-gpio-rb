@@ -65,14 +65,14 @@ class GPIO
   #
   # @param pin [Integer] GPIO pin number to use
   # @param mode [String] pin mode : IN or OUT
-  def initialize(pin, mode = OUT)
+  def initialize(pin, _mode = OUT)
     @pin = pin
 
     unexport_pin
     export_pin
-
-    @mode = mode
     @exported = true
+
+    self.mode = _mode
   end
 
   # Set the pin mode
@@ -95,7 +95,7 @@ class GPIO
   #
   # @return [Integer] pin's value : 0 or 1
   def value
-    File.open("#{LIB_PATH}/gpio#{@pin}/value", 'r').read
+    File.open("#{LIB_PATH}/gpio#{@pin}/value", 'r').read.to_i
   end
 
   # Set a value to the pin
